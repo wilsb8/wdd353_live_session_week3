@@ -4,7 +4,8 @@
   "description": "Node JS EJS Templating Site",
   "main": "server.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "start":"nodemon server"
   },
   "repository": {
     "type": "git",
