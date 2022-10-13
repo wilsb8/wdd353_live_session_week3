@@ -66,11 +66,12 @@ router.post('/register',  urlencodedParser, [
     check('email', 'Email invalid')
         .exists()
         .matches(/(^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$)/),
-        
+
     check('password', 'Password must be at least 8 characters in length and no more than 15')
         .exists()
         .isLength({min: 8, max: 15})
         .matches(/(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$)/)
+        
 ], (req,res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty())
