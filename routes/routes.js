@@ -5,7 +5,9 @@ const { check, validationResult } = require('express-validator');
 const urlencodedParser = bodyParser.urlencoded({ extended: false});
 
 router.get("/", (req, res) => {
-    res.render('home', {pagename: 'Home'});
+    res.render('home', {
+        pagename: 'Home',
+    });
 });
 
 router.get('/about', (req, res) => {
@@ -43,17 +45,17 @@ router.post('/register',  urlencodedParser, [
         .isLength({min: 3})
         .matches(/(.*[A-Za-z])/),
 
-    check('address', 'Adress must start with a numeric')
+    check('address', 'Address must start with a numeric')
         .exists()
         .isLength({max: 25})
         .matches(/(.*[0-9A-Za-z])/),
 
-    check('city', 'Adress must start with a numeric')
+    check('city', 'City must not contain numerics')
         .exists()
         .isLength({max: 15})
         .matches(/(.*[A-Za-z])/),
 
-    check('state', 'Must be non-numeric')
+    check('state', 'State must not contain numerics')
         .exists()
         .isLength({max: 15})
         .matches(/(.*[A-Za-z])/),
@@ -71,7 +73,7 @@ router.post('/register',  urlencodedParser, [
         .exists()
         .isLength({min: 8, max: 15})
         .matches(/(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$)/)
-        
+
 ], (req,res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty())
