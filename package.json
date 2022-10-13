@@ -1,0 +1,35 @@
+{
+  "name": "wdd353_live_session_week3",
+  "version": "1.0.0",
+  "description": "Node JS EJS Templating Site",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilsb8/wdd353_live_session_week3.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "EJS",
+    "Templating",
+    "Front"
+  ],
+  "author": "William A. Ferguson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilsb8/wdd353_live_session_week3/issues"
+  },
+  "homepage": "https://github.com/wilsb8/wdd353_live_session_week3#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.1.2",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.0"
+  }
+}
