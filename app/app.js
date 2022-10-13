@@ -4,6 +4,7 @@ const ejs = require('ejs');
 const morgan = require('morgan');
 const router = require("../routes/routes");
 
+
 // use middleware to set payload and url encoding
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true}));
