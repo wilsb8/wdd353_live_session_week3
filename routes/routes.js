@@ -37,29 +37,36 @@ router.post('/register',  urlencodedParser, [
         .exists()
         .isLength({min: 3})
         .matches(/(.*[A-Za-z])/),
+
     check('lastName', 'Last name must be at least 3 characters long')
         .exists()
         .isLength({min: 3})
         .matches(/(.*[A-Za-z])/),
+
     check('address', 'Adress must start with a numeric')
         .exists()
         .isLength({max: 25})
-        .matches(/(.*[0-9A-Za-z])/),  
+        .matches(/(.*[0-9A-Za-z])/),
+
     check('city', 'Adress must start with a numeric')
         .exists()
         .isLength({max: 15})
-        .matches(/(.*[A-Za-z])/), 
-    check('state', 'Adress must start with a numeric')
+        .matches(/(.*[A-Za-z])/),
+
+    check('state', 'Must be non-numeric')
         .exists()
         .isLength({max: 15})
-        .matches(/(.*[A-Za-z])/), 
+        .matches(/(.*[A-Za-z])/),
+
     check('zipcode', 'ZIP must be numeric')
         .exists()
         .isLength({max: 5})
-        .matches(/(.*[0-9])/), 
+        .matches(/(.*[0-9])/),
+
     check('email', 'Email invalid')
         .exists()
         .matches(/(^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$)/),
+        
     check('password', 'Password must be at least 8 characters in length and no more than 15')
         .exists()
         .isLength({min: 8, max: 15})
