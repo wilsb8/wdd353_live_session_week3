@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-const { check, validationResult } = require('express-validator');
-const urlencodedParser = bodyParser.urlencoded({ extended: false});
+
 
 router.get("/", (req, res) => {
     res.render('home', {
@@ -34,56 +32,43 @@ router.get('/register', (req, res) => {
     });
 });
 
-router.post('/register',  urlencodedParser, [
-    check('firstName', 'First name must be at least 3 characters long')
-        .exists()
-        .isLength({min: 3})
-        .matches(/(.*[A-Za-z])/),
-
-    check('lastName', 'Last name must be at least 3 characters long')
-        .exists()
-        .isLength({min: 3})
-        .matches(/(.*[A-Za-z])/),
-
-    check('address', 'Address must start with a numeric')
-        .exists()
-        .isLength({max: 25})
-        .matches(/(.*[0-9A-Za-z])/),
-
-    check('city', 'City must not contain numerics')
-        .exists()
-        .isLength({max: 15})
-        .matches(/(.*[A-Za-z])/),
-
-    check('state', 'State must not contain numerics')
-        .exists()
-        .isLength({max: 15})
-        .matches(/(.*[A-Za-z])/),
-
-    check('zipcode', 'ZIP must be numeric')
-        .exists()
-        .isLength({max: 5})
-        .matches(/(.*[0-9])/),
-
-    check('email', 'Email invalid')
-        .exists()
-        .matches(/(^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$)/),
-
-    check('password', 'Password must be at least 8 characters in length and no more than 15')
-        .exists()
-        .isLength({min: 8, max: 15})
-        .matches(/(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$)/)
-
-], (req,res) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty())
-        {
-            const alert = errors.array();
-            res.render('register' , {
-                alert
-            });
-        }
-        
+// POST method
+router.post('/register', (req) => {
+    const data = req.body;
+    const errors = {};
+    // validate using regex
+    // firstName
+    if(!(/^([a-zA-Z '-]+)$/).test(String(data.firstName))) {
+        errors.firstName = ['Must provide a first name.'];
+    }
+    // lastName
+    if(!(/^([a-zA-Z '-]+)$/).test(String(data.lastName))) {
+        errors.lastName = ['Must provide a last name.'];
+    }
+    // address
+    if(!(/\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}/).test(String(data.address))) {
+        errors.address = ['Must provide an address.'];
+    }
+    // city
+    if(!(/^([a-zA-Z '-]+)$/).test(String(data.city))) {
+        errors.city = ['Must provide a city name.'];
+    }
+    // state
+    if(!(/^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$/).test(String(data.state))) {
+        errors.state = ['Must provide a two letter state abbreviation.'];
+    }
+    // zipcode
+    if(!(/^\d{5}$/).test(String(data.zipcode))) {
+        errors.zipcode = ['Must provide a 5-digit ZIP code.'];
+    }
+    // email
+    if(!(/[\w-]+@([\w-]+\.)+[\w-]+/).test(String(data.email))) {
+        errors.email = ['Must enter a valid email address.'];
+    }
+    // password
+    if(!(/^[a-zA-Z]\w{3,14}$/).test(String(data.password))) {
+        errors.password = ['Must enter a password at least 4 characters and no more than 15 characters.']
+    }
 });
 
 module.exports = router;
