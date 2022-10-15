@@ -12,7 +12,7 @@ var a = new RegExp(/\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}/); // addre
 var s = new RegExp(/^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$/); // 2 char abbrev.
 var z = new RegExp(/^\d{5}$/); // zip
 var e = new RegExp(/[\w-]+@([\w-]+\.)+[\w-]+/); // email
-var p = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/); 
+var p = new RegExp(/^.{8,32}$/); 
 
 console.log(p);
 // end foward declarations ******************************************
@@ -100,10 +100,10 @@ router.post('/register', (req, res) => {
     } else {
         errors.eMsg = "You must provide a valid email.";
     }
-    if (p.test(pw)) {
+    if (p.test(pw) && pw.length <=8 & pw.length >=32) {
         delete errors.pwMsg;
     } else {
-        errors.pwMsg = "Password must contain at least one letter, at least one number, and be longer than 8 charaters."
+        errors.pwMsg = "Password must be at least 8 characters but no more than 32."
     }
     // provide feedback alert
     const isEmpty = Object.keys(errors) === 0;
