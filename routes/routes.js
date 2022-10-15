@@ -5,7 +5,7 @@ router.use(express.urlencoded({extended: false}));
 
 // forward declarations *******************************************
 
-var fn = new RegExp(/^([a-zA-Z '-]+)$/); // apparently for test to work, you have to do it this way.
+var fn = new RegExp(/^([a-zA-Z '-]+)$/); // apparently for test to work you have to do it this way.
 var ln = new RegExp(/^([a-zA-Z '-]+)$/);
 var cit = new RegExp(/^([a-zA-Z '-]+)$/); // first, last and city
 var a = new RegExp(/\d{1,3}.?\d{0,3}\s[a-zA-Z]{2,30}\s[a-zA-Z]{2,15}/); // address
