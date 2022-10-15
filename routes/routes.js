@@ -100,13 +100,13 @@ router.post('/register', (req, res) => {
     } else {
         errors.eMsg = "You must provide a valid email.";
     }
-    if (p.test(pw) && pw.length <=8 & pw.length >=32) {
+    if (p.test(pw) && (pw.length >=8 || pw.length <=32)) {
         delete errors.pwMsg;
     } else {
         errors.pwMsg = "Password must be at least 8 characters but no more than 32."
     }
     // provide feedback alert
-    const isEmpty = Object.keys(errors) === 0;
+    const isEmpty = Object.keys(errors) == 0;
     console.log(errors);
     let alert = "";
     if(isEmpty) {
