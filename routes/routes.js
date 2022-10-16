@@ -159,7 +159,7 @@ router.post("/login", (req, res) => {
     let pw = req.body.pw;
     if (email.toLowerCase() != "mike@aol.com" || pw != "abc123") {
       res.render('login', {
-        pagename: "login",
+        pagename: "Login",
         status: "Invalid username/password.",
       });
     } else {
