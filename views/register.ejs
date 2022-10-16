@@ -2,69 +2,72 @@
 <%-include ('./includes/header')%>
 
 <body>
-   <h2>Register</h2>
-   
-   <% if(typeof(alert) != "undefined") { %>
-    <div class="<%= alert %>" role="alert">
-      <% if(typeof(status) != "undefined") { %>
-      <span><%= status %></span>
-      <% } %>
-    </div>
-    <% } %>
+    <div class="container"></div>
+        <h2>Register</h2>
+        
+        <% if(typeof(alert) != "undefined") { %>
+            <div class="<%= alert %>" role="alert">
+            <% if(typeof(status) != "undefined") { %>
+            <span><%= status %></span>
+            <% } %>
+            </div>
+            <% } %>
+            
+            <form action="register" method="POST">
+                <div class="form-group mb-3">
+                <label for="firstName" class="form-label pt-3">First Name</label>
+                <input type="text" class="form-control w-25 mb-3" name="firstName" id="firstName"> 
+                <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.fnameMsg %></span><% } %>
+                </div>
 
-    <form action="register" method="POST">
-        <div class="form-group mb-3">
-           <label for="firstName" class="form-label">First Name</label>
-           <input type="text" class="form-control w-25" name="firstName" id="firstName"> 
-           <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.fnameMsg %></span><% } %>
+                <div class="form-group mb-3">
+                    <label for="lastName" class="form-label pt-3">Last Name</label>
+                    <input type="text" class="form-control w-25 mb-3" name="lastName" id="lastName"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.lnameMsg %></span><% } %> 
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="address" class="form-label pt-3">Address</label>
+                    <input type="text" class="form-control w-25 mb-3" name="address" id="address"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.addrMsg %></span><% } %> 
+
+                <div class="form-group mb-3">
+                    <label for="city" class="form-label pt-3">City</label>
+                    <input type="text" class="form-control w-25 mb-3" name="city" id="address"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.ctyMsg %></span><% } %> 
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="state" class="form-label pt-3">State</label>
+                    <input type="text" class="form-control w-25 mb-3" name="state" id="state"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.staMsg %></span><% } %> 
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="zipcode" class="form-label pt-3">ZIP Code</label>
+                    <input type="text" class="form-control w-25 mb-3" name="zipcode" id="zipcode"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.zcMsg %></span><% } %> 
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label pt-3">Email</label>
+                    <input type="text" class="form-control w-25 mb-3" name="email" id="email"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.eMsg %></span><% } %> 
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label pt-3">Password</label>
+                    <input type="password" class="form-control w-25 mb-3" name="password" id="password"> 
+                    <% if(typeof(errors) != "undefined"){ %><span style="color: red; font-weight: bold"><%= errors.pwMsg %></span><% } %> 
+                </div>
+            </div>
+
+                
+                
+                <button type="submit" class="btn btn-primary my-3">Submit</button>
+                
+            </form>
         </div>
-
-        <div class="form-group">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control w-25" name="lastName" id="lastName"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.lnameMsg %></span><% } %> 
-         </div>
-
-         <div class="form-group">
-            <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control w-25" name="address" id="address"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.addrMsg %></span><% } %> 
-
-         <div class="form-group">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control w-25" name="city" id="address"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.ctyMsg %></span><% } %> 
-         </div>
-
-         <div class="form-group">
-            <label for="state" class="form-label">State</label>
-            <input type="text" class="form-control w-25" name="state" id="state"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.staMsg %></span><% } %> 
-         </div>
-
-         <div class="form-group">
-            <label for="zipcode" class="form-label">ZIP Code</label>
-            <input type="text" class="form-control w-25" name="zipcode" id="zipcode"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.zcMsg %></span><% } %> 
-         </div>
-
-         <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control w-25" name="email" id="email"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.eMsg %></span><% } %> 
-         </div>
-
-         <div class="form-group">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control w-25" name="password" id="password"> 
-            <% if(typeof(errors) != "undefined"){ %><span class="py-2"><%= errors.pwMsg %></span><% } %> 
-         </div>
-
-        
-        
-        <button type="submit" class="btn btn-primary my-3">Submit</button>
-        
-      </form>
 </body>
 
 <%-include ('./includes/footer') %>
