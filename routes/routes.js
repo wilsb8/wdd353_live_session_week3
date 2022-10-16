@@ -3,7 +3,6 @@ const router = express.Router();
 let session = require('express-session'); // const will throw an error
 require('dotenv');
 router.use(express.json());
-// router.use(express.urlencoded({extended: false}));
 
 
 // session middleware **************************************
