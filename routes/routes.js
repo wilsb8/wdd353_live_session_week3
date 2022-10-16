@@ -154,7 +154,7 @@ router.get('/login', (req,res) => {
     })
 });
 router.post("/login", (req, res) => {
-    let email = req.body.userId;
+    let email = req.body.uid;
     let pw = req.body.pw;
     if (email.toLowerCase() != "mike@aol.com" || pw != "abc123") {
       res.render('login', {
